@@ -206,9 +206,9 @@ a {
 
 .product-question {
   color: var(--ink) !important;
-  font-size: 20px;
+  font-size: clamp(15px, 1.45vw, 17px);
   font-weight: 500;
-  max-width: 27ch;
+  white-space: nowrap;
 }
 
 .artifact {
@@ -335,6 +335,10 @@ footer {
 
   .product-story.reverse .code-window {
     order: 2;
+  }
+
+  .product-question {
+    white-space: normal;
   }
 
   .loop-line {
