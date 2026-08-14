@@ -309,6 +309,7 @@ footer {
   padding: 0 28px 40px;
   color: var(--ink-soft);
   font-size: 13px;
+  text-align: center;
 }
 
 @media (max-width: 860px) {
