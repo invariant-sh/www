@@ -15,3 +15,9 @@ Open <http://127.0.0.1:4173>.
 Pushes to `main` deploy through [the Pages workflow](./.github/workflows/pages.yml).
 The custom domain is declared in [`CNAME`](./CNAME).
 
+## Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) and the [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md).
+Security reports: [`SECURITY.md`](./SECURITY.md).
+
+Licensed under the [Apache License, Version 2.0](./LICENSE).
