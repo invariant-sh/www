@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: site files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Required site files exist
+        run: |
+          set -euo pipefail
+          test -f index.html
+          test -f styles.css
+          test -f CNAME
+          test -f LICENSE
+          test -f SECURITY.md
+          grep -qx 'getinvariant.sh' CNAME
