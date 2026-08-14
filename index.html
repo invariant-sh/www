@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invariant Labs — Ship agents that hold.</title>
+    <meta
+      name="description"
+      content="Agent reliability infrastructure. Maul finds failures, Holds measures quality, Vigil prevents incidents and spend."
+    />
+    <link rel="icon" href="./assets/invariant_logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=7" />
+  </head>
+  <body>
+    <a class="skip" href="#products">Skip to products</a>
+
+    <header class="topbar">
+      <a class="topbar-mark" href="#top">Invariant Labs</a>
+      <nav>
+        <a href="https://github.com/invariant-sh">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Invariant mark">
+        <div class="stage">
+          <img
+            class="brand-logo"
+            src="./assets/invariant_logo.svg"
+            alt="Invariant — an ouroboros around a green invariant point"
+          />
+          <p class="hero-category">Agent Reliability Infrastructure</p>
+          <h1 class="hero-impact">Ship Agents That Hold</h1>
+        </div>
+      </section>
+
+      <section class="loop" id="loop" aria-label="Product loop">
+        <p class="loop-line">
+          <span>Maul</span><i>find</i>
+          <span>Holds</span><i>measure</i>
+          <span>Vigil</span><i>prevent</i>
+        </p>
+      </section>
+
+      <section class="products" id="products" aria-label="Invariant products">
+        <article class="product-story">
+          <div class="product-copy">
+            <p class="product-kicker">01 · find failures</p>
+            <h2>Maul</h2>
+            <p class="product-question">How does the agent behave under failure?</p>
+            <p>
+              An adversarial OpenAI-compatible proxy. Point the agent's
+              <code>base_url</code> at Maul to inject controlled failures and record
+              how the workflow responds.
+            </p>
+            <p class="artifact"><span>Artifact</span> reliability_report.json</p>
+            <a class="product-link" href="https://github.com/invariant-sh/maul">
+              Explore Maul on GitHub <span>↗</span>
+            </a>
+          </div>
+          <div class="code-window" aria-label="Maul terminal example">
+            <div class="code-bar">
+              <span class="window-dots"><i></i><i></i><i></i></span>
+              <span>terminal · maul</span>
+            </div>
+            <pre><code><span class="prompt">$</span> maul test --config maul.yaml \
+  --agent "python agent.py"
+
+<span class="muted">scenario</span>        force_429
+<span class="muted">faults_injected</span> 3
+<span class="muted">recovered</span>       2
+<span class="success">report written</span>  artifacts/reliability_report.json</code></pre>
+          </div>
+        </article>
+
+        <article class="product-story reverse">
+          <div class="product-copy">
+            <p class="product-kicker">02 · measure quality</p>
+            <h2>Holds</h2>
+            <p class="product-question">Did the agent actually solve the job?</p>
+            <p>
+              A suite-first evaluation harness. Run representative tasks repeatedly,
+              grade real outcomes, and stop regressions before they reach production.
+            </p>
+            <p class="artifact"><span>Artifacts</span> holds.yaml · baseline.json</p>
+            <a class="product-link" href="https://github.com/invariant-sh/holds">
+              Explore Holds on GitHub <span>↗</span>
+            </a>
+          </div>
+          <div class="code-window" aria-label="Holds terminal example">
+            <div class="code-bar">
+              <span class="window-dots"><i></i><i></i><i></i></span>
+              <span>terminal · holds</span>
+            </div>
+            <pre><code><span class="prompt">$</span> holds run --suite holds.yaml
+
+<span class="muted">tasks</span>        12
+<span class="muted">pass_rate</span>    96%
+<span class="muted">consistency</span>  92%
+<span class="success">threshold</span>    passed
+
+<span class="prompt">$</span> holds compare --baseline baseline.json</code></pre>
+          </div>
+        </article>
+
+        <article class="product-story">
+          <div class="product-copy">
+            <p class="product-kicker">03 · prevent incidents</p>
+            <h2>Vigil</h2>
+            <p class="product-question">Are unsafe or expensive behaviors stopped?</p>
+            <p>
+              A runtime policy SDK for explicit operational controls. Define budgets,
+              allowlists, circuit breakers, routing, and redacted audit behavior.
+            </p>
+            <p class="artifact"><span>Artifacts</span> vigil.yaml · audit.jsonl</p>
+            <a class="product-link" href="https://github.com/invariant-sh/vigil">
+              Explore Vigil on GitHub <span>↗</span>
+            </a>
+          </div>
+          <div class="code-window" aria-label="Vigil policy example">
+            <div class="code-bar">
+              <span class="window-dots"><i></i><i></i><i></i></span>
+              <span>vigil.yaml</span>
+            </div>
+            <pre><code><span class="key">budgets</span>:
+  <span class="key">max_llm_calls_per_workflow</span>: 12
+  <span class="key">max_cost_usd_per_workflow</span>: 0.75
+
+<span class="key">controls</span>:
+  - <span class="key">type</span>: circuit_breaker
+    <span class="key">condition</span>: repeated_equivalent_request
+    <span class="key">max_occurrences</span>: 3</code></pre>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>Apache-2.0 · Local by default · <a href="https://github.com/invariant-sh">invariant-sh</a></p>
+    </footer>
+
+  </body>
+</html>
