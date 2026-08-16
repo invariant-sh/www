@@ -1,0 +1,51 @@
+{
+  "label": "local fixture",
+  "note": "Shaped like Maul action-smoke, the Holds refund example, and Vigil support-agent audit events. Not copied from CI yet.",
+  "captured_at": "2026-08-15T21:32:00-03:00",
+  "maul": {
+    "workflow": "Action smoke",
+    "agent": "python3 ci/retry_agent.py",
+    "scenario": "force_500",
+    "unrecovered": {
+      "file": "demo/maul-unrecovered.json",
+      "config": "ci/maul.force500.unrecovered.yaml",
+      "seed": 42,
+      "fail_on": "resilience",
+      "gate": "fail"
+    },
+    "recovered": {
+      "file": "demo/maul-recovered.json",
+      "config": "ci/maul.force500.yaml",
+      "seed": 5,
+      "fail_on": "resilience",
+      "gate": "pass"
+    }
+  },
+  "holds": {
+    "suite": "examples/deterministic_agent/holds.yaml",
+    "task": "classify-refund-request",
+    "fail": {
+      "file": "demo/holds-fail.json",
+      "gate": "fail"
+    },
+    "pass": {
+      "file": "demo/holds-pass.json",
+      "gate": "pass"
+    },
+    "compare": {
+      "file": "demo/holds-compare.json"
+    }
+  },
+  "vigil": {
+    "policy": "examples/support_agent/vigil.yaml",
+    "workflow_id": "wf-loop",
+    "ungoverned": {
+      "file": "demo/vigil-ungoverned.json",
+      "gate": "fail"
+    },
+    "held": {
+      "file": "demo/vigil-held.json",
+      "gate": "pass"
+    }
+  }
+}

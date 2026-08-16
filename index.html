@@ -38,7 +38,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=7" />
+    <link rel="stylesheet" href="./styles.css?v=13" />
   </head>
   <body>
     <a class="skip" href="#products">Skip to products</a>
@@ -46,6 +46,8 @@
     <header class="topbar">
       <a class="topbar-mark" href="#top">Invariant Labs</a>
       <nav>
+        <a href="#products">Products</a>
+        <a href="#use-cases">Use cases</a>
         <a href="https://github.com/invariant-sh">GitHub</a>
       </nav>
     </header>
@@ -72,7 +74,7 @@
       </section>
 
       <section class="products" id="products" aria-label="Invariant products">
-        <article class="product-story">
+        <article class="product-story" id="maul">
           <div class="product-copy">
             <p class="product-kicker">01 · find failures</p>
             <h2>Maul</h2>
@@ -83,9 +85,12 @@
               how the workflow responds.
             </p>
             <p class="artifact"><span>Artifact</span> reliability_report.json</p>
-            <a class="product-link" href="https://github.com/invariant-sh/maul">
-              Explore Maul on GitHub <span>↗</span>
-            </a>
+            <div class="actions">
+              <a class="cta" href="#use-maul">See how Maul holds <span>↓</span></a>
+              <a class="cta-ghost" href="https://github.com/invariant-sh/maul">
+                Open on GitHub <span>↗</span>
+              </a>
+            </div>
           </div>
           <div class="code-window" aria-label="Maul terminal example">
             <div class="code-bar">
@@ -102,7 +107,7 @@
           </div>
         </article>
 
-        <article class="product-story reverse">
+        <article class="product-story reverse" id="holds">
           <div class="product-copy">
             <p class="product-kicker">02 · measure quality</p>
             <h2>Holds</h2>
@@ -112,9 +117,12 @@
               grade real outcomes, and stop regressions before they reach production.
             </p>
             <p class="artifact"><span>Artifacts</span> holds.yaml · baseline.json</p>
-            <a class="product-link" href="https://github.com/invariant-sh/holds">
-              Explore Holds on GitHub <span>↗</span>
-            </a>
+            <div class="actions">
+              <a class="cta" href="#use-holds">See how Holds measures <span>↓</span></a>
+              <a class="cta-ghost" href="https://github.com/invariant-sh/holds">
+                Open on GitHub <span>↗</span>
+              </a>
+            </div>
           </div>
           <div class="code-window" aria-label="Holds terminal example">
             <div class="code-bar">
@@ -132,7 +140,7 @@
           </div>
         </article>
 
-        <article class="product-story">
+        <article class="product-story" id="vigil">
           <div class="product-copy">
             <p class="product-kicker">03 · prevent incidents</p>
             <h2>Vigil</h2>
@@ -142,9 +150,12 @@
               allowlists, circuit breakers, routing, and redacted audit behavior.
             </p>
             <p class="artifact"><span>Artifacts</span> vigil.yaml · audit.jsonl</p>
-            <a class="product-link" href="https://github.com/invariant-sh/vigil">
-              Explore Vigil on GitHub <span>↗</span>
-            </a>
+            <div class="actions">
+              <a class="cta" href="#use-vigil">See how Vigil stops it <span>↓</span></a>
+              <a class="cta-ghost" href="https://github.com/invariant-sh/vigil">
+                Open on GitHub <span>↗</span>
+              </a>
+            </div>
           </div>
           <div class="code-window" aria-label="Vigil policy example">
             <div class="code-bar">
@@ -162,11 +173,129 @@
           </div>
         </article>
       </section>
+
+      <section class="use-cases" id="use-cases" aria-label="Use cases">
+        <header class="section-head">
+          <p class="section-kicker">Use cases</p>
+          <h2>Same agent. One run fails. One holds.</h2>
+          <p>
+            Fixtures shaped like Maul <code>action-smoke</code>, the Holds refund
+            suite, and Vigil support-agent audit events.
+          </p>
+        </header>
+
+        <article class="use-case" id="use-maul">
+          <header class="use-case-head">
+            <div>
+              <p class="product-kicker">01 · Maul</p>
+              <h3>Retry under <code>force_500</code></h3>
+              <p class="evidence-caption">
+                Same <code>retry_agent.py</code>. Left never recovers, so
+                <code>--fail-on resilience</code> is red. Right recovers on the next
+                same-session call.
+              </p>
+            </div>
+            <div class="actions">
+              <a class="cta" href="https://github.com/invariant-sh/maul">
+                Start with Maul <span>↗</span>
+              </a>
+            </div>
+          </header>
+          <div class="tape-grid">
+            <article class="code-window tape-pane" id="maul-fail-pane" aria-label="Maul unrecovered report">
+              <div class="tape-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>maul test · unrecovered</span></div>
+              <div class="tape-body"><p class="tape-error">Loading fixture…</p></div>
+            </article>
+            <article class="code-window tape-pane" id="maul-hold-pane" aria-label="Maul recovered report">
+              <div class="tape-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>maul test · recovered</span></div>
+              <div class="tape-body"><p class="tape-error">Loading fixture…</p></div>
+            </article>
+          </div>
+          <p class="evidence-links">
+            <a href="./demo/maul-unrecovered.json">unrecovered.json</a>
+            <a href="./demo/maul-recovered.json">recovered.json</a>
+          </p>
+        </article>
+
+        <article class="use-case" id="use-holds">
+          <header class="use-case-head">
+            <div>
+              <p class="product-kicker">02 · Holds</p>
+              <h3>Refund classification · two repeats</h3>
+              <p class="evidence-caption">
+                Same refund task. Left mislabels on the second attempt and
+                regresses against the baseline. Right stays at 100% and holds.
+              </p>
+            </div>
+            <div class="actions">
+              <a class="cta" href="https://github.com/invariant-sh/holds">
+                Start with Holds <span>↗</span>
+              </a>
+            </div>
+          </header>
+          <div class="tape-grid">
+            <article class="code-window tape-pane" id="holds-fail-pane" aria-label="Holds failing compare">
+              <div class="tape-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>holds compare · refund suite</span></div>
+              <div class="tape-body"><p class="tape-error">Loading fixture…</p></div>
+            </article>
+            <article class="code-window tape-pane" id="holds-hold-pane" aria-label="Holds passing run">
+              <div class="tape-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>holds run · refund suite</span></div>
+              <div class="tape-body"><p class="tape-error">Loading fixture…</p></div>
+            </article>
+          </div>
+          <p class="evidence-links">
+            <a href="./demo/holds-fail.json">holds-fail.json</a>
+            <a href="./demo/holds-pass.json">holds-pass.json</a>
+            <a href="./demo/holds-compare.json">holds-compare.json</a>
+          </p>
+        </article>
+
+        <article class="use-case" id="use-vigil">
+          <header class="use-case-head">
+            <div>
+              <p class="product-kicker">03 · Vigil</p>
+              <h3>Retry loop · circuit breaker</h3>
+              <p class="evidence-caption">
+                Same retry loop, fingerprint <code>samefp</code>. Left has no policy,
+                so the agent keeps spending. Right trips the breaker and writes the
+                audit line.
+              </p>
+            </div>
+            <div class="actions">
+              <a class="cta" href="https://github.com/invariant-sh/vigil">
+                Start with Vigil <span>↗</span>
+              </a>
+            </div>
+          </header>
+          <div class="tape-grid">
+            <article class="code-window tape-pane" id="vigil-fail-pane" aria-label="Ungoverned retry loop">
+              <div class="tape-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>audit.jsonl · ungoverned</span></div>
+              <div class="tape-body"><p class="tape-error">Loading fixture…</p></div>
+            </article>
+            <article class="code-window tape-pane" id="vigil-hold-pane" aria-label="Vigil blocked retry loop">
+              <div class="tape-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>audit.jsonl · vigil</span></div>
+              <div class="tape-body"><p class="tape-error">Loading fixture…</p></div>
+            </article>
+          </div>
+          <p class="evidence-links">
+            <a href="./demo/vigil-ungoverned.json">ungoverned.json</a>
+            <a href="./demo/vigil-held.json">held.json</a>
+          </p>
+        </article>
+      </section>
     </main>
 
     <footer>
+      <div class="footer-cta">
+        <p>Ship agents that hold.</p>
+        <div class="actions">
+          <a class="cta" href="https://github.com/invariant-sh/maul">Start with Maul <span>↗</span></a>
+          <a class="cta-ghost" href="https://github.com/invariant-sh">Invariant on GitHub</a>
+        </div>
+      </div>
       <p>Apache-2.0 · Local by default · <a href="https://github.com/invariant-sh">invariant-sh</a></p>
     </footer>
 
+    <script src="./demo.js" defer></script>
   </body>
 </html>

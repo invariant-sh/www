@@ -3,8 +3,8 @@
 By participating you agree to the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 This repository is the static Invariant Labs website. Keep it small: HTML, CSS,
-and assets. No analytics beacons, no secrets, no build toolchain unless we add
-one on purpose.
+vanilla JS for the evidence tape, and assets. No analytics beacons, no secrets,
+no build toolchain unless we add one on purpose.
 
 ## Preview
 
