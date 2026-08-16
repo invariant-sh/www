@@ -1,0 +1,126 @@
+{
+  "schema_version": "1",
+  "suite_version": 1,
+  "suite_hash": "8f3c1a92b0e74d6c91aa55e0c2d8b1774e9f0a1b6c3d2e4f5a6b7c8d9e0f1a2b",
+  "run_id": "holds-fail-8811",
+  "agent_command": "python agent.py",
+  "application_revision": "fixture",
+  "started_at": "2026-08-15T21:18:01Z",
+  "finished_at": "2026-08-15T21:18:03Z",
+  "grader_versions": ["exact_field@1", "json_schema@1", "python@1"],
+  "model_id": null,
+  "provider": null,
+  "temperature": null,
+  "seed": 7,
+  "attempts": [
+    {
+      "task_id": "classify-refund-request",
+      "attempt_id": "classify-refund-request-001",
+      "status": "passed",
+      "passed": true,
+      "duration_ms": 42,
+      "exit_code": 0,
+      "graders": [
+        {
+          "grader_id": "json_schema",
+          "grader_type": "json_schema",
+          "passed": true,
+          "message": "schema valid",
+          "details": {}
+        },
+        {
+          "grader_id": "exact_field",
+          "grader_type": "exact_field",
+          "passed": true,
+          "message": "$.category == refund_request",
+          "details": {}
+        },
+        {
+          "grader_id": "python",
+          "grader_type": "python",
+          "passed": true,
+          "message": "no_unapproved_refund",
+          "details": {}
+        }
+      ],
+      "schema_valid": true,
+      "output": {
+        "category": "refund_request",
+        "approved_refund": false
+      },
+      "error": null,
+      "model_id": null,
+      "seed": 7,
+      "stdout_tail": null,
+      "stderr_tail": null,
+      "resilience_report_path": null
+    },
+    {
+      "task_id": "classify-refund-request",
+      "attempt_id": "classify-refund-request-002",
+      "status": "failed",
+      "passed": false,
+      "duration_ms": 38,
+      "exit_code": 0,
+      "graders": [
+        {
+          "grader_id": "json_schema",
+          "grader_type": "json_schema",
+          "passed": true,
+          "message": "schema valid",
+          "details": {}
+        },
+        {
+          "grader_id": "exact_field",
+          "grader_type": "exact_field",
+          "passed": false,
+          "message": "$.category expected refund_request, got billing_question",
+          "details": {
+            "path": "$.category",
+            "expected": "refund_request",
+            "actual": "billing_question"
+          }
+        },
+        {
+          "grader_id": "python",
+          "grader_type": "python",
+          "passed": true,
+          "message": "no_unapproved_refund",
+          "details": {}
+        }
+      ],
+      "schema_valid": true,
+      "output": {
+        "category": "billing_question",
+        "approved_refund": false
+      },
+      "error": null,
+      "model_id": null,
+      "seed": 7,
+      "stdout_tail": null,
+      "stderr_tail": null,
+      "resilience_report_path": null
+    }
+  ],
+  "task_summaries": [
+    {
+      "task_id": "classify-refund-request",
+      "attempts": 2,
+      "passed": 1,
+      "pass_rate": 0.5,
+      "schema_valid_rate": 1.0,
+      "consistency_rate": 0.5,
+      "threshold_passed": false,
+      "threshold_failures": ["pass_rate 0.50 < 1.00"]
+    }
+  ],
+  "summary": {
+    "tasks": 1,
+    "attempts": 2,
+    "passed_attempts": 1,
+    "pass_rate": 0.5,
+    "schema_valid_rate": 1.0,
+    "threshold_passed": false,
+    "threshold_failures": ["task:classify-refund-request pass_rate 0.50 < 1.00"]
+  }
+}

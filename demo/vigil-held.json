@@ -1,0 +1,62 @@
+{
+  "kind": "held",
+  "workflow_id": "wf-loop",
+  "project": "support-agent",
+  "policy": "examples/support_agent/vigil.yaml",
+  "events": [
+    {
+      "schema_version": "1",
+      "timestamp": "2026-08-12T20:00:16Z",
+      "decision_id": "69611a68-3529-4e5f-b947-32ee52cdef07",
+      "policy_hash": "41f8c93b13f152c4e709d303e6fa46808048abc63aa86295904099c102b7ed19",
+      "project": "support-agent",
+      "environment": "production",
+      "workflow_id": "wf-loop",
+      "request_id": "req-loop-1",
+      "request_fingerprint": "samefp",
+      "action": "allow",
+      "reason_code": "allowed",
+      "requested_model": "gpt-4o-mini",
+      "effective_model": "gpt-4o-mini",
+      "estimated_cost": { "micro_usd": 1000, "display": "$0.001000" },
+      "workflow_call_count": 1,
+      "workflow_cost": { "micro_usd": 1000, "display": "$0.001000" }
+    },
+    {
+      "schema_version": "1",
+      "timestamp": "2026-08-12T20:00:16Z",
+      "decision_id": "20d68444-de13-4b71-a915-69f7c29087be",
+      "policy_hash": "41f8c93b13f152c4e709d303e6fa46808048abc63aa86295904099c102b7ed19",
+      "project": "support-agent",
+      "environment": "production",
+      "workflow_id": "wf-loop",
+      "request_id": "req-loop-2",
+      "request_fingerprint": "samefp",
+      "action": "allow",
+      "reason_code": "allowed",
+      "requested_model": "gpt-4o-mini",
+      "effective_model": "gpt-4o-mini",
+      "estimated_cost": { "micro_usd": 1000, "display": "$0.001000" },
+      "workflow_call_count": 2,
+      "workflow_cost": { "micro_usd": 2000, "display": "$0.002000" }
+    },
+    {
+      "schema_version": "1",
+      "timestamp": "2026-08-12T20:00:16Z",
+      "decision_id": "de5bbcee-813d-436b-9ab8-a760b221ced3",
+      "policy_hash": "41f8c93b13f152c4e709d303e6fa46808048abc63aa86295904099c102b7ed19",
+      "project": "support-agent",
+      "environment": "production",
+      "workflow_id": "wf-loop",
+      "request_id": "req-loop-3",
+      "request_fingerprint": "samefp",
+      "action": "block",
+      "reason_code": "circuit_breaker_tripped",
+      "requested_model": "gpt-4o-mini",
+      "effective_model": null,
+      "estimated_cost": { "micro_usd": 1000, "display": "$0.001000" },
+      "workflow_call_count": 2,
+      "workflow_cost": { "micro_usd": 2000, "display": "$0.002000" }
+    }
+  ]
+}

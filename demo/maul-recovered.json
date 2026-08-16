@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.2",
+  "run_id": "maul-5005",
+  "total_proxy_requests": 2,
+  "billable_llm_calls": 1,
+  "faults_injected": 1,
+  "average_latency_ms": 18.5,
+  "budget_snapshot": {
+    "calls_reserved": 1,
+    "calls_limit": 20,
+    "observed_cost_usd": {
+      "micro_usd": 31,
+      "display": "$0.000031"
+    },
+    "cost_limit_usd": {
+      "micro_usd": 1000000,
+      "display": "$1.000000"
+    }
+  },
+  "pricing_registry_version": "openai-text-2025-05",
+  "sessions": [
+    {
+      "session_id": "maul-5005-session",
+      "request_count": 2,
+      "fault_events": 1,
+      "recovery_events": 1,
+      "recovered": true
+    }
+  ],
+  "summary": {
+    "successful_requests": 1,
+    "failed_requests": 1,
+    "budget_rejections": 0,
+    "recovery_events": 1,
+    "post_fault_successes": 1,
+    "fault_events": 1,
+    "sessions_observed": 1,
+    "recovered_sessions": 1,
+    "unrecovered_sessions": 0,
+    "unattributed_requests": 0,
+    "observed_cost_usd": {
+      "micro_usd": 31,
+      "display": "$0.000031"
+    }
+  },
+  "requests": [
+    {
+      "path": "/v1/chat/completions",
+      "status": 500,
+      "latency_ms": 12,
+      "fault_injected": "force_500",
+      "billable": false,
+      "model": "gpt-4o-mini",
+      "call_number": 1,
+      "budget_decision": "NotBillable",
+      "usage": null,
+      "cost_usd": null,
+      "session_id": "maul-5005-session",
+      "sequence": 1
+    },
+    {
+      "path": "/v1/chat/completions",
+      "status": 200,
+      "latency_ms": 25,
+      "fault_injected": null,
+      "billable": true,
+      "model": "gpt-4o-mini",
+      "call_number": 2,
+      "budget_decision": "Allowed",
+      "usage": {
+        "Metered": {
+          "prompt_tokens": 12,
+          "completion_tokens": 4,
+          "total_tokens": 16
+        }
+      },
+      "cost_usd": {
+        "micro_usd": 31,
+        "display": "$0.000031"
+      },
+      "session_id": "maul-5005-session",
+      "sequence": 2
+    }
+  ]
+}

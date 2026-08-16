@@ -20,7 +20,16 @@ jobs:
           set -euo pipefail
           test -f index.html
           test -f styles.css
+          test -f demo.js
           test -f CNAME
           test -f LICENSE
           test -f SECURITY.md
+          test -f demo/maul-recovered.json
+          test -f demo/maul-unrecovered.json
+          test -f demo/holds-pass.json
+          test -f demo/holds-fail.json
+          test -f demo/holds-compare.json
+          test -f demo/vigil-ungoverned.json
+          test -f demo/vigil-held.json
+          test -f demo/provenance.json
           grep -qx 'getinvariant.sh' CNAME
